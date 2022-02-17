@@ -46,7 +46,7 @@ jobs:
       uses: 'google-github-actions/auth@v0'
       with:
         token_format: 'access_token'
-        workload_identity_provider: 'projects/204001894332/locations/global/workloadIdentityPools/cse-project-pool'
+        workload_identity_provider: 'projects/204001894332/locations/global/workloadIdentityPools/cse-project-pool/providers/cse-project-oidc'
         service_account: 'quote-service@cse-project-group8.iam.gserviceaccount.com'
 
     # Alternative option - authentication via credentials json
