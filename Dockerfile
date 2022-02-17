@@ -7,6 +7,6 @@ RUN pip3 install -r requirements.txt
 
 COPY . .
 
-EXPOSE 50051
+EXPOSE 50055
 
 CMD [ "python3", "quote_server.py"]
