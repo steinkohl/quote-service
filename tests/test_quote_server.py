@@ -9,7 +9,6 @@ def mock_get_quotes_from_url(values):
 
 
 class Test(TestCase):
-
     @mock.patch("quote_server._get_quotes_from_url", mock_get_quotes_from_url)
     def test_get_random_quote(self):
         actual = get_random_quote()
