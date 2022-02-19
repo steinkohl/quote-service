@@ -1,27 +1,29 @@
-from concurrent import futures
-import requests
 import random
+from concurrent import futures
+
 import grpc
+import requests
+
 import quote_pb2
 import quote_pb2_grpc
 
 
 def _get_quotes_from_url(url: str) -> list:
     f = requests.get(url)
+    if f.status_code == 404:
+        raise ValueError
     lines = str(f.text).split('\n')
     return lines
 
 
 def get_random_quote(
-    url: str = "https://raw.githubusercontent.com/steinkohl/quotes/main/tech_quotes.txt"
+        url: str = "https://raw.githubusercontent.com/steinkohl/quotes/main/tech_quotes.txt"
 ) -> str:
     try:
         quotes = _get_quotes_from_url(url)
-        # maybe '404: Not Found' as return?
-        if len(quotes) == 1 and str(quotes[0]).startswith('404'):
-            return "Error 404: Quote not found"
         return random.choice(quotes)
-    except Exception:
+    except Exception as e:
+        print("Error: ", e)
         return '"An error does not become a mistake until you refuse to correct it." - John F. Kennedy'
 
 
@@ -39,4 +41,5 @@ def main():
     server.wait_for_termination()
 
 
-main()
+if __name__ == '__main__':
+    main()
