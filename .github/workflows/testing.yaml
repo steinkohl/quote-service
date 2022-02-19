@@ -6,8 +6,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      COVERAGE_SINGLE: 60
-      COVERAGE_TOTAL: 60
+      COVERAGE_SINGLE: 50
+      COVERAGE_TOTAL: 50
 
     steps:
       - uses: actions/checkout@v2
