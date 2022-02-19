@@ -12,12 +12,12 @@ def _get_quotes_from_url(url: str) -> list:
     f = requests.get(url)
     if f.status_code == 404:
         raise ValueError
-    lines = str(f.text).split('\n')
+    lines = str(f.text).split("\n")
     return lines
 
 
 def get_random_quote(
-        url: str = "https://raw.githubusercontent.com/steinkohl/quotes/main/tech_quotes.txt"
+    url: str = "https://raw.githubusercontent.com/steinkohl/quotes/main/tech_quotes.txt",
 ) -> str:
     try:
         quotes = _get_quotes_from_url(url)
@@ -36,10 +36,10 @@ class QuoteServicer(quote_pb2_grpc.QuoteServiceServicer):
 def main():
     server = grpc.server(futures.ThreadPoolExecutor())
     quote_pb2_grpc.add_QuoteServiceServicer_to_server(QuoteServicer(), server)
-    server.add_insecure_port('[::]:50055')
+    server.add_insecure_port("[::]:50055")
     server.start()
     server.wait_for_termination()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
