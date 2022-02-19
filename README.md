@@ -8,14 +8,17 @@
 # quote-service
 
 The quote-service is a microservice which serves quotes via gRPC API.
+
 The docker image is build automatically after every change in the main branch and pushed to [Docker Hub](https://hub.docker.com/r/csecsecse/quote-service).
 
 To pull the image from docker hub, you just have to execute the command:
+
 ``
 docker pull csecsecse/quote-service
 ``
 
 The default port for gRPC is set to 50055, the protobuffer can be compiled with the [proto file](./proto/quote.proto).
+
 A guide how to compile the proto buffer: [Google's Protocol Buffer Guide](https://developers.google.com/protocol-buffers/docs/overview)
 
 
