@@ -17,7 +17,6 @@ jobs:
           python-version: 3.9
       - name: Install dependencies and print out python version for debugging
         run: |
-          cd backend/python_service
           python -V
           python -m pip install -r requirements.txt
           python -m pip install -r dev_requirements.txt
