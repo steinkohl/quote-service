@@ -1,4 +1,3 @@
-[![license](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/steinkohl/quote-service/blob/main/LICENSE)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Python Lint and Static Analysis](https://github.com/steinkohl/quote-service/actions/workflows/lint.yaml/badge.svg)](https://github.com/steinkohl/quote-service/actions/workflows/lint.yaml)
 [![Python Testing](https://github.com/steinkohl/quote-service/actions/workflows/testing.yaml/badge.svg)](https://github.com/steinkohl/quote-service/actions/workflows/testing.yaml)
@@ -17,7 +16,7 @@ To pull the image from docker hub, you just have to execute the command:
 docker pull csecsecse/quote-service
 ``
 
-The default port for gRPC is set to 50055, the protobuffer can be compiled with the [proto file](./proto/quote.proto).
+The default port for gRPC is set to 50055, the protobuffer can be compiled with the [proto file](./proto/quote.proto) to suite your application.
 
 A guide how to compile the proto buffer: [Google's Protocol Buffer Guide](https://developers.google.com/protocol-buffers/docs/overview)
 
