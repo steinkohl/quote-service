@@ -1,4 +1,4 @@
-name: Backend (Python) Lint and Static Analysis
+name: Python Lint and Static Analysis
 
 on: [push]
 

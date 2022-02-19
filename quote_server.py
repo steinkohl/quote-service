@@ -21,7 +21,7 @@ def get_random_quote(
 ) -> str:
     try:
         quotes = _get_quotes_from_url(url)
-        return random.choice(quotes)
+        return random.choice(quotes)  # nosec
     except Exception as e:
         print("Error: ", e)
         return '"An error does not become a mistake until you refuse to correct it." - John F. Kennedy'
