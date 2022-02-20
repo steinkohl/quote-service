@@ -3,6 +3,7 @@ from concurrent import futures
 
 import grpc
 import requests
+import logging
 
 import quote_pb2
 import quote_pb2_grpc
@@ -28,14 +29,17 @@ def get_random_quote(
 
 class QuoteServicer(quote_pb2_grpc.QuoteServiceServicer):
     def GetQuote(self, request, context):
+        logging.info(f"Got new request: {request}")
         response = quote_pb2.QuoteReply()
         response.message = get_random_quote()
+        logging.info(f"Send response: {response.message}")
 
 
 def main():
     server = grpc.server(futures.ThreadPoolExecutor())
     quote_pb2_grpc.add_QuoteServiceServicer_to_server(QuoteServicer(), server)
     server.add_insecure_port("[::]:50055")
+    logging.info("Server initialized! Waiting for traffic...")
     server.start()
     server.wait_for_termination()
 
