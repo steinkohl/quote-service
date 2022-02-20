@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+package hipstershop;
+
 // The quote service definition.
 service QuoteService {
   // Sends a quote
