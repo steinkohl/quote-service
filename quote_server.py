@@ -51,5 +51,3 @@ if __name__ == "__main__":
             logging.info("Server Running - Waiting for traffic...")
     except KeyboardInterrupt:
         server.stop(0)
-
-
