@@ -18,7 +18,12 @@ docker pull csecsecse/quote-service
 
 The default port for gRPC is set to 50055, the protobuffer can be compiled with the [proto file](./proto/quote.proto) to suite your application.
 
-A guide how to compile the proto buffer: [Google's Protocol Buffer Guide](https://developers.google.com/protocol-buffers/docs/overview)
+To compile the protobuffer and build the necessary python libaray, you can run this command in the /quote-service directory, if needed:
+``
+python -m grpc_tools.protoc --python_out=.. --grpc_python_out=.. -I. proto/quote.proto
+``
+
+A complete guide how to compile the proto buffer: [Google's Protocol Buffer Guide](https://developers.google.com/protocol-buffers/docs/overview)
 
 
 
