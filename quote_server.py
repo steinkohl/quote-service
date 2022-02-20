@@ -29,7 +29,7 @@ def get_random_quote(
 
 
 class QuoteServicer(quote_pb2_grpc.QuoteServiceServicer):
-    def GetQuote(self, request, context):
+    def GetQuoteOfTheDay(self, request, context):
         logging.info(f"Got new request: {request}")
         response = quote_pb2.QuoteReply()
         response.message = get_random_quote()
@@ -51,5 +51,3 @@ if __name__ == "__main__":
             logging.info("Server Running - Waiting for traffic...")
     except KeyboardInterrupt:
         server.stop(0)
-
-
