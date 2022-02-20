@@ -7,42 +7,49 @@ from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(
+    b'\n\x0bquote.proto"\x0e\n\x0cQuoteRequest"\x1d\n\nQuoteReply\x12\x0f\n\x07message\x18\x01 \x01(\t2>\n\x0cQuoteService\x12.\n\x10GetQuoteOfTheDay\x12\r.QuoteRequest\x1a\x0b.QuoteReplyb\x06proto3'
+)
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0bquote.proto\"\x0e\n\x0cQuoteRequest\"\x1d\n\nQuoteReply\x12\x0f\n\x07message\x18\x01 \x01(\t2>\n\x0cQuoteService\x12.\n\x10GetQuoteOfTheDay\x12\r.QuoteRequest\x1a\x0b.QuoteReplyb\x06proto3')
-
-
-
-_QUOTEREQUEST = DESCRIPTOR.message_types_by_name['QuoteRequest']
-_QUOTEREPLY = DESCRIPTOR.message_types_by_name['QuoteReply']
-QuoteRequest = _reflection.GeneratedProtocolMessageType('QuoteRequest', (_message.Message,), {
-  'DESCRIPTOR' : _QUOTEREQUEST,
-  '__module__' : 'quote_pb2'
-  # @@protoc_insertion_point(class_scope:QuoteRequest)
-  })
+_QUOTEREQUEST = DESCRIPTOR.message_types_by_name["QuoteRequest"]
+_QUOTEREPLY = DESCRIPTOR.message_types_by_name["QuoteReply"]
+QuoteRequest = _reflection.GeneratedProtocolMessageType(
+    "QuoteRequest",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _QUOTEREQUEST,
+        "__module__": "quote_pb2"
+        # @@protoc_insertion_point(class_scope:QuoteRequest)
+    },
+)
 _sym_db.RegisterMessage(QuoteRequest)
 
-QuoteReply = _reflection.GeneratedProtocolMessageType('QuoteReply', (_message.Message,), {
-  'DESCRIPTOR' : _QUOTEREPLY,
-  '__module__' : 'quote_pb2'
-  # @@protoc_insertion_point(class_scope:QuoteReply)
-  })
+QuoteReply = _reflection.GeneratedProtocolMessageType(
+    "QuoteReply",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _QUOTEREPLY,
+        "__module__": "quote_pb2"
+        # @@protoc_insertion_point(class_scope:QuoteReply)
+    },
+)
 _sym_db.RegisterMessage(QuoteReply)
 
-_QUOTESERVICE = DESCRIPTOR.services_by_name['QuoteService']
+_QUOTESERVICE = DESCRIPTOR.services_by_name["QuoteService"]
 if _descriptor._USE_C_DESCRIPTORS == False:
 
-  DESCRIPTOR._options = None
-  _QUOTEREQUEST._serialized_start=15
-  _QUOTEREQUEST._serialized_end=29
-  _QUOTEREPLY._serialized_start=31
-  _QUOTEREPLY._serialized_end=60
-  _QUOTESERVICE._serialized_start=62
-  _QUOTESERVICE._serialized_end=124
+    DESCRIPTOR._options = None
+    _QUOTEREQUEST._serialized_start = 15
+    _QUOTEREQUEST._serialized_end = 29
+    _QUOTEREPLY._serialized_start = 31
+    _QUOTEREPLY._serialized_end = 60
+    _QUOTESERVICE._serialized_start = 62
+    _QUOTESERVICE._serialized_end = 124
 # @@protoc_insertion_point(module_scope)
-
