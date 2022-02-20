@@ -3,7 +3,7 @@ syntax = "proto3";
 // The quote service definition.
 service QuoteService {
   // Sends a quote
-  rpc GetQuote(QuoteRequest) returns (QuoteReply);
+  rpc GetQuoteOfTheDay(QuoteRequest) returns (QuoteReply);
 }
 
 message QuoteRequest {}
