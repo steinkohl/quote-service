@@ -14,8 +14,8 @@ class QuoteServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.GetQuote = channel.unary_unary(
-            "/QuoteService/GetQuote",
+        self.GetQuoteOfTheDay = channel.unary_unary(
+            "/QuoteService/GetQuoteOfTheDay",
             request_serializer=quote__pb2.QuoteRequest.SerializeToString,
             response_deserializer=quote__pb2.QuoteReply.FromString,
         )
@@ -24,7 +24,7 @@ class QuoteServiceStub(object):
 class QuoteServiceServicer(object):
     """The quote service definition."""
 
-    def GetQuote(self, request, context):
+    def GetQuoteOfTheDay(self, request, context):
         """Sends a quote"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
@@ -33,8 +33,8 @@ class QuoteServiceServicer(object):
 
 def add_QuoteServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-        "GetQuote": grpc.unary_unary_rpc_method_handler(
-            servicer.GetQuote,
+        "GetQuoteOfTheDay": grpc.unary_unary_rpc_method_handler(
+            servicer.GetQuoteOfTheDay,
             request_deserializer=quote__pb2.QuoteRequest.FromString,
             response_serializer=quote__pb2.QuoteReply.SerializeToString,
         ),
@@ -50,7 +50,7 @@ class QuoteService(object):
     """The quote service definition."""
 
     @staticmethod
-    def GetQuote(
+    def GetQuoteOfTheDay(
         request,
         target,
         options=(),
@@ -65,7 +65,7 @@ class QuoteService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            "/QuoteService/GetQuote",
+            "/QuoteService/GetQuoteOfTheDay",
             quote__pb2.QuoteRequest.SerializeToString,
             quote__pb2.QuoteReply.FromString,
             options,
