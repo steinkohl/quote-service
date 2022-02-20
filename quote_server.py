@@ -22,7 +22,9 @@ def get_random_quote(
 ) -> str:
     try:
         quotes = _get_quotes_from_url(url)
-        return random.choice(quotes)  # nosec
+        quote = random.choice(quotes)  # nosec
+        logging.info(f"Pcked quote: {quote}")
+        return quote
     except Exception:
         return '"An error does not become a mistake until you refuse to correct it." - John F. Kennedy'
 
@@ -31,7 +33,6 @@ class QuoteServiceServicer(quote_pb2_grpc.QuoteServiceServicer):
     def GetQuoteOfTheDay(self, request, context):
         response = quote_pb2.QuoteReply()
         response.message = get_random_quote()
-        logging.info(f"Send quote: {response.message}")
         return response
 
 
