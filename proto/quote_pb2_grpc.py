@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import quote_pb2 as quote__pb2
+from proto import quote_pb2 as proto_dot_quote__pb2
 
 
 class QuoteServiceStub(object):
@@ -16,8 +16,8 @@ class QuoteServiceStub(object):
         """
         self.GetQuoteOfTheDay = channel.unary_unary(
             "/hipstershop.QuoteService/GetQuoteOfTheDay",
-            request_serializer=quote__pb2.QuoteRequest.SerializeToString,
-            response_deserializer=quote__pb2.QuoteReply.FromString,
+            request_serializer=proto_dot_quote__pb2.QuoteRequest.SerializeToString,
+            response_deserializer=proto_dot_quote__pb2.QuoteReply.FromString,
         )
 
 
@@ -35,8 +35,8 @@ def add_QuoteServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
         "GetQuoteOfTheDay": grpc.unary_unary_rpc_method_handler(
             servicer.GetQuoteOfTheDay,
-            request_deserializer=quote__pb2.QuoteRequest.FromString,
-            response_serializer=quote__pb2.QuoteReply.SerializeToString,
+            request_deserializer=proto_dot_quote__pb2.QuoteRequest.FromString,
+            response_serializer=proto_dot_quote__pb2.QuoteReply.SerializeToString,
         ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -66,8 +66,8 @@ class QuoteService(object):
             request,
             target,
             "/hipstershop.QuoteService/GetQuoteOfTheDay",
-            quote__pb2.QuoteRequest.SerializeToString,
-            quote__pb2.QuoteReply.FromString,
+            proto_dot_quote__pb2.QuoteRequest.SerializeToString,
+            proto_dot_quote__pb2.QuoteReply.FromString,
             options,
             channel_credentials,
             insecure,

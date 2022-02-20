@@ -6,8 +6,7 @@ import grpc
 import requests
 import logging
 
-import quote_pb2
-import quote_pb2_grpc
+from proto import quote_pb2, quote_pb2_grpc
 
 
 def _get_quotes_from_url(url: str) -> list:
@@ -30,10 +29,9 @@ def get_random_quote(
 
 class QuoteServiceServicer(quote_pb2_grpc.QuoteServiceServicer):
     def GetQuoteOfTheDay(self, request, context):
-        logging.info(f"Got new request: {request}")
         response = quote_pb2.QuoteReply()
         response.message = get_random_quote()
-        logging.info(f"Send response: {response.message}")
+        logging.info(f"Send quote: {response.message}")
         return response
 
 
@@ -42,13 +40,12 @@ if __name__ == "__main__":
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     quote_pb2_grpc.add_QuoteServiceServicer_to_server(QuoteServiceServicer(), server)
     server.add_insecure_port("[::]:50055")
-    logging.info("Server initialized! Waiting for traffic...")
     server.start()
 
     # keep alive
     try:
         while True:
-            time.sleep(10)
             logging.info("Server Running - Waiting for traffic...")
+            time.sleep(10)
     except KeyboardInterrupt:
         server.stop(0)
