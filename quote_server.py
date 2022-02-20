@@ -32,7 +32,7 @@ class QuoteServicer(quote_pb2_grpc.QuoteServiceServicer):
         logging.info(f"Got new request: {request}")
         response = quote_pb2.QuoteReply()
         response.message = get_random_quote()
-        logging.info(f"Send responds: {response.message}")
+        logging.info(f"Send response: {response.message}")
 
 
 def main():
