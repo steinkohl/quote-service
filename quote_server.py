@@ -39,7 +39,7 @@ def main():
     server = grpc.server(futures.ThreadPoolExecutor())
     quote_pb2_grpc.add_QuoteServiceServicer_to_server(QuoteServicer(), server)
     server.add_insecure_port("[::]:50055")
-    logging.info('Server initialized! Waiting for traffic...')
+    logging.info("Server initialized! Waiting for traffic...")
     server.start()
     server.wait_for_termination()
 
