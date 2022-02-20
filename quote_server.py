@@ -1,4 +1,5 @@
 import random
+import time
 from concurrent import futures
 
 import grpc
@@ -36,13 +37,21 @@ class QuoteServicer(quote_pb2_grpc.QuoteServiceServicer):
 
 
 def main():
-    server = grpc.server(futures.ThreadPoolExecutor())
+    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     quote_pb2_grpc.add_QuoteServiceServicer_to_server(QuoteServicer(), server)
     server.add_insecure_port("[::]:50055")
     logging.info("Server initialized! Waiting for traffic...")
     server.start()
-    server.wait_for_termination()
+
+    # keep alive
+    try:
+        while True:
+            time.sleep(10)
+            logging.info("Server Running - Waiting for traffic...")
+    except KeyboardInterrupt:
+        server.stop(0)
 
 
 if __name__ == "__main__":
+    logging.getLogger().setLevel(logging.INFO)
     main()
